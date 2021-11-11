@@ -278,15 +278,39 @@ while gameaktiv:
                 if randomFruit == 1:
                     if redAppleList != []:
                         redAppleList.pop()
+                    elif greenAppleList != []:
+                        greenAppleList.pop()
+                    elif plumList != []:
+                        plumList.pop()
+                    elif pearList != []:
+                        pearList.pop()
                 if randomFruit == 2:
                     if greenAppleList != []:
                         greenAppleList.pop()
+                    elif redAppleList != []:
+                        redAppleList.pop()
+                    elif plumList != []:
+                        plumList.pop()
+                    elif pearList != []:
+                        pearList.pop()
                 if randomFruit == 3:
                     if plumList != []:
                         plumList.pop()
+                    elif redAppleList != []:
+                        redAppleList.pop()
+                    elif greenAppleList != []:
+                        greenAppleList.pop()
+                    elif pearList != []:
+                        pearList.pop()
                 if randomFruit == 4:
                     if pearList != []:
                         pearList.pop()
+                    elif redAppleList != []:
+                        redAppleList.pop()
+                    elif greenAppleList != []:
+                        greenAppleList.pop()
+                    elif plumList != []:
+                        plumList.pop()
 
 
     # integrate Gamelogic
