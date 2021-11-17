@@ -395,3 +395,4 @@ while endsequenz:
         clock.tick( FPS )
 
 pygame.quit()
+print("Kleine Änderung")
