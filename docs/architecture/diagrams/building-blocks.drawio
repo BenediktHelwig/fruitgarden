@@ -1,0 +1,167 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="building-blocks" id="building-blocks">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ================= LEVEL 1 : the system ================= -->
+        <mxCell id="lvl1-container" value="Fruit Garden" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;strokeColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="40" width="1080" height="200" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-mainpy" value="main.py&lt;br&gt;the entire runtime" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="80" y="100" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-pics" value="pics/&lt;br&gt;asset store; contract: filename = element name" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="340" y="100" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-objects" value="module/objects.py&lt;br&gt;ORPHANED: never imported, not part of the runtime" style="rounded=0;whiteSpace=wrap;html=1;dashed=1;fillColor=#f5f5f5;strokeColor=#666666;fontColor=#666666;" vertex="1" parent="1">
+          <mxGeometry x="600" y="100" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-mainspec" value="main.spec&lt;br&gt;PyInstaller build definition" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;" vertex="1" parent="1">
+          <mxGeometry x="860" y="100" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Note near the orphaned module -->
+        <mxCell id="note-tree" value="Designed in 2021 but never built: a Tree class owning amount and sortOfFruit. See diagramm/Class.drawio." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=6;spacingTop=6;size=16;" vertex="1" parent="1">
+          <mxGeometry x="1160" y="100" width="280" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ================= LEVEL 2 : whitebox of main.py ================= -->
+        <mxCell id="lvl2-container" value="main.py (whitebox)" style="rounded=0;whiteSpace=wrap;html=1;verticalAlign=top;fontStyle=1;fillColor=none;strokeColor=#000000;fontSize=14;" vertex="1" parent="1">
+          <mxGeometry x="40" y="320" width="700" height="820" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-config" value="Configuration and globals (lines 9-25)&lt;br&gt;Window size, FPS, colours, mutable state gameaktiv / gameLost / draftResult; creates screen" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="380" width="600" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-elementhierarchy" value="Element hierarchy (lines 29-78)&lt;br&gt;Element base class and subclasses Raven, Fruit, Basket, Dice" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="540" width="600" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-world" value="World construction (lines 81-241)&lt;br&gt;Creates dice, basket, 4 trees, 4 fields, gate, raven, and the four fruit lists" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="700" width="600" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-gameloop" value="Game loop (lines 250-358)&lt;br&gt;Input handling -&gt; rule application -&gt; outcome check -&gt; rendering" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="860" width="600" height="80" as="geometry" />
+        </mxCell>
+
+        <mxCell id="blk-endseq" value="End sequence (lines 360-395)&lt;br&gt;Win/lose screen, second loop" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;" vertex="1" parent="1">
+          <mxGeometry x="80" y="1020" width="600" height="80" as="geometry" />
+        </mxCell>
+
+        <!-- execution order edges -->
+        <mxCell id="e-config-eh" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;" edge="1" parent="1" source="blk-config" target="blk-elementhierarchy">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-eh-world" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;" edge="1" parent="1" source="blk-elementhierarchy" target="blk-world">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-world-gameloop" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;" edge="1" parent="1" source="blk-world" target="blk-gameloop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-gameloop-endseq" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;" edge="1" parent="1" source="blk-gameloop" target="blk-endseq">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Class cluster beside "Element hierarchy" ================= -->
+        <mxCell id="lbl-cluster" value="Element hierarchy - class detail" style="text;html=1;fontStyle=1;align=left;verticalAlign=middle;fontSize=13;" vertex="1" parent="1">
+          <mxGeometry x="780" y="400" width="400" height="30" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls-element" value="Element" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="460" width="200" height="216" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-a1" value="- name" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="26" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-a2" value="- picture" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="52" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-a3" value="- pictureWidth" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="78" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-a4" value="- pictureHeight" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="104" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-a5" value="+ picPosX" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="130" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-a6" value="+ picPosY" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="156" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="182" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-element-m1" value="+ drawPicture()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-element">
+          <mxGeometry y="190" width="200" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls-raven" value="Raven" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="780" y="756" width="200" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-raven-m1" value="+ moveForward()  // adds 130 to picPosX" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-raven">
+          <mxGeometry y="26" width="200" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls-fruit" value="Fruit" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1040" y="756" width="200" height="52" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-fruit-a1" value="- amount = 4  // never read" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-fruit">
+          <mxGeometry y="26" width="200" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls-basket" value="Basket (no behaviour)" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1300" y="756" width="200" height="26" as="geometry" />
+        </mxCell>
+
+        <mxCell id="cls-dice" value="Dice" style="swimlane;fontStyle=1;childLayout=stackLayout;horizontal=1;startSize=26;horizontalStack=0;resizeParent=1;resizeParentMax=0;resizeLast=0;collapsible=1;marginBottom=0;html=1;" vertex="1" parent="1">
+          <mxGeometry x="1560" y="756" width="200" height="112" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-dice-a1" value="- sign: dict" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-dice">
+          <mxGeometry y="26" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-dice-sep" value="" style="line;strokeWidth=1;fillColor=none;align=left;verticalAlign=middle;spacingTop=-1;spacingLeft=3;spacingRight=3;rotatable=0;labelPosition=right;points=[];portConstraint=eastwest;html=1;" vertex="1" parent="cls-dice">
+          <mxGeometry y="52" width="200" height="8" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-dice-m1" value="+ overDice(mousePos)" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-dice">
+          <mxGeometry y="60" width="200" height="26" as="geometry" />
+        </mxCell>
+        <mxCell id="cls-dice-m2" value="+ rollDice()" style="text;strokeColor=none;fillColor=none;align=left;verticalAlign=top;spacingLeft=4;spacingRight=4;overflow=hidden;rotatable=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;html=1;" vertex="1" parent="cls-dice">
+          <mxGeometry y="86" width="200" height="26" as="geometry" />
+        </mxCell>
+
+        <!-- generalisation (inheritance) edges: hollow triangle pointing at Element -->
+        <mxCell id="e-raven-element" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=14;" edge="1" parent="1" source="cls-raven" target="cls-element">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-fruit-element" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=14;" edge="1" parent="1" source="cls-fruit" target="cls-element">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-basket-element" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=14;" edge="1" parent="1" source="cls-basket" target="cls-element">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="e-dice-element" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=block;endFill=0;endSize=14;" edge="1" parent="1" source="cls-dice" target="cls-element">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- connector from the whitebox block to its class detail -->
+        <mxCell id="e-eh-detail" value="see class diagram" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=open;endSize=12;fontSize=10;" edge="1" parent="1" source="blk-elementhierarchy" target="cls-element">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Notes ================= -->
+        <mxCell id="note-nodomain" value="No domain layer. Game state is pixel coordinates (raven.picPosX) and the lengths of four module-level fruit lists." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=6;spacingTop=6;size=16;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="860" width="320" height="100" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

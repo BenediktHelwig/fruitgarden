@@ -1,0 +1,114 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="runtime-dice-roll" id="runtime-dice-roll">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Lifelines, 220px apart -->
+        <mxCell id="lifeline-player" value="Player" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="80" width="160" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-gameloop" value="Game loop (main.py)" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="80" width="160" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-dice" value="Dice" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="520" y="80" width="160" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-fruitlists" value="Fruit lists" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="80" width="160" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-raven" value="Raven" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="960" y="80" width="160" height="900" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-screen" value="Screen" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="80" width="160" height="900" as="geometry" />
+        </mxCell>
+
+        <!-- 1. Player clicks -->
+        <mxCell id="msg-1" value="mouse click" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.089;exitDx=0;exitDy=0;entryX=0;entryY=0.089;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-player" target="lifeline-gameloop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 2. Self message: event polling -->
+        <mxCell id="msg-2" value="pygame.event.get() -&gt; MOUSEBUTTONDOWN" style="html=1;verticalAlign=top;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.156;exitDx=0;exitDy=0;entryX=1;entryY=0.200;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-gameloop">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="222" />
+              <mxPoint x="490" y="258" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 3. overDice -->
+        <mxCell id="msg-3" value="overDice(mousePosition)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.267;exitDx=0;exitDy=0;entryX=0;entryY=0.267;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-dice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 4. return True/False -->
+        <mxCell id="msg-4" value="True / False" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.333;exitDx=0;exitDy=0;entryX=1;entryY=0.333;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-dice" target="lifeline-gameloop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 5. rollDice, guarded -->
+        <mxCell id="msg-5" value="[die was hit] rollDice()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.400;exitDx=0;exitDy=0;entryX=0;entryY=0.400;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-dice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 6. return draftResult -->
+        <mxCell id="msg-6" value="draftResult, e.g. 'red'" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.467;exitDx=0;exitDy=0;entryX=1;entryY=0.467;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-dice" target="lifeline-gameloop">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- alt combined fragment for messages 7-9 -->
+        <mxCell id="frag-alt" value="alt" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;spacingLeft=6;spacingTop=4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="540" width="860" height="220" as="geometry" />
+        </mxCell>
+
+        <!-- 7. moveForward, guard raven -->
+        <mxCell id="msg-7" value="[draftResult == 'raven'] moveForward()  // +130px" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.556;exitDx=0;exitDy=0;entryX=0;entryY=0.556;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-raven">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 8. pop, guard colour -->
+        <mxCell id="msg-8" value="[draftResult is a colour] pop()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.622;exitDx=0;exitDy=0;entryX=0;entryY=0.622;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-fruitlists">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 9. random pick, guard basket -->
+        <mxCell id="msg-9" value="[draftResult == 'basket'] random pick with fallback chain" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.689;exitDx=0;exitDy=0;entryX=0;entryY=0.689;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-fruitlists">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- Defect note anchored near messages 7-9 -->
+        <mxCell id="note-defect" value="DEFECT: messages 7-9 execute on EVERY mouse-button event, not only after a successful roll - draftResult is never cleared. Clicking anywhere re-applies the previous roll." style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=6;spacingTop=6;size=16;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="540" width="340" height="220" as="geometry" />
+        </mxCell>
+        <mxCell id="e-note-defect" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;dashed=1;endArrow=none;" edge="1" parent="1" source="note-defect" target="frag-alt">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 10. Self message: outcome check -->
+        <mxCell id="msg-10" value="check raven.picPosX &gt; 648 -&gt; lost / all lists empty -&gt; won" style="html=1;verticalAlign=top;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.800;exitDx=0;exitDy=0;entryX=1;entryY=0.844;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-gameloop">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="490" y="802" />
+              <mxPoint x="490" y="838" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- 11. render -->
+        <mxCell id="msg-11" value="fill + drawPicture() for every element" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.889;exitDx=0;exitDy=0;entryX=0;entryY=0.889;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-screen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- 12. flip -->
+        <mxCell id="msg-12" value="pygame.display.flip()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.933;exitDx=0;exitDy=0;entryX=0;entryY=0.933;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-gameloop" target="lifeline-screen">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

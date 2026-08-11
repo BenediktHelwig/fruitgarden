@@ -1,0 +1,60 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="context" id="context">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- Actor -->
+        <mxCell id="ctx-player" value="Player (child and parent)" style="shape=umlActor;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;verticalLabelPosition=bottom;verticalAlign=top;labelBackgroundColor=#ffffff;" vertex="1" parent="1">
+          <mxGeometry x="80" y="180" width="30" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- System under description -->
+        <mxCell id="ctx-fruitgarden" value="Fruit Garden (system under description)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#1f4e79;strokeColor=#0d2b46;fontColor=#ffffff;fontStyle=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Neighbours -->
+        <mxCell id="ctx-pygame" value="pygame / SDL2 (external library)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="680" y="160" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ctx-windows" value="Windows desktop (external)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="1000" y="160" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <mxCell id="ctx-pics" value="pics/ asset folder (external resource)" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffffff;strokeColor=#000000;dashed=1;" vertex="1" parent="1">
+          <mxGeometry x="320" y="360" width="200" height="100" as="geometry" />
+        </mxCell>
+
+        <!-- Legend -->
+        <mxCell id="ctx-legend" value="Legend: Filled = system under description. White = neighbour." style="text;html=1;align=left;verticalAlign=top;fontStyle=2;" vertex="1" parent="1">
+          <mxGeometry x="80" y="420" width="360" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- Edges -->
+        <mxCell id="e-player-fg" value="clicks the die" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;fontSize=11;exitX=1;exitY=0.35;exitDx=0;exitDy=0;entryX=0;entryY=0.35;entryDx=0;entryDy=0;" edge="1" parent="1" source="ctx-player" target="ctx-fruitgarden">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e-fg-player" value="renders orchard, raven and roll result" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;fontSize=11;exitX=0;exitY=0.65;exitDx=0;exitDy=0;entryX=1;entryY=0.65;entryDx=0;entryDy=0;" edge="1" parent="1" source="ctx-fruitgarden" target="ctx-player">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e-fg-pygame" value="window, events, image and font API" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ctx-fruitgarden" target="ctx-pygame">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e-pygame-windows" value="display, mouse, keyboard" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;fontSize=11;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;" edge="1" parent="1" source="ctx-pygame" target="ctx-windows">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <mxCell id="e-fg-pics" value="reads pics/&lt;name&gt;.png by filename convention" style="edgeStyle=orthogonalEdgeStyle;rounded=0;html=1;endArrow=open;endSize=12;fontSize=11;exitX=0.5;exitY=1;exitDx=0;exitDy=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;" edge="1" parent="1" source="ctx-fruitgarden" target="ctx-pics">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>
