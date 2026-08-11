@@ -1,0 +1,231 @@
+<mxfile host="app.diagrams.net">
+  <diagram name="target-runtime-dice-roll" id="target-runtime-dice-roll">
+    <mxGraphModel dx="800" dy="600" grid="1" gridSize="20" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1169" pageHeight="826" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+
+        <!-- ================= Caption ================= -->
+        <mxCell id="cap-note" value="Target architecture &#8212; proposed, not yet implemented" style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=middle;spacingLeft=8;fontStyle=2;fontSize=13;size=14;" vertex="1" parent="1">
+          <mxGeometry x="80" y="40" width="700" height="40" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Lifelines, 220px apart ================= -->
+        <mxCell id="lifeline-player" value="Player" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="80" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-app" value="app.py" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="300" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-boardview" value="BoardView" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="520" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-game" value="Game" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="740" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-dice" value="Dice" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="960" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-orchard" value="Orchard" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1180" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-tree" value="Tree" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1400" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-basket" value="Basket" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1620" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+        <mxCell id="lifeline-raven" value="Raven" style="shape=umlLifeline;perimeter=lifelinePerimeter;whiteSpace=wrap;html=1;container=1;dropTarget=0;collapsible=0;recursiveResize=0;outlineConnect=0;" vertex="1" parent="1">
+          <mxGeometry x="1840" y="120" width="160" height="1620" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Activation bars ================= -->
+        <mxCell id="act-player-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-player">
+          <mxGeometry x="75" y="60" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act-app-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-app">
+          <mxGeometry x="75" y="60" width="10" height="1540" as="geometry" />
+        </mxCell>
+        <mxCell id="act-boardview-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-boardview">
+          <mxGeometry x="75" y="100" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-boardview-2" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-boardview">
+          <mxGeometry x="75" y="1560" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act-game-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-game">
+          <mxGeometry x="75" y="220" width="10" height="720" as="geometry" />
+        </mxCell>
+        <mxCell id="act-game-2" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-game">
+          <mxGeometry x="75" y="1020" width="10" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="act-game-3" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-game">
+          <mxGeometry x="75" y="1480" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-dice-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-dice">
+          <mxGeometry x="75" y="260" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-orchard-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-orchard">
+          <mxGeometry x="75" y="380" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-tree-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-tree">
+          <mxGeometry x="75" y="460" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-tree-2" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-tree">
+          <mxGeometry x="75" y="1060" width="10" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="act-basket-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-basket">
+          <mxGeometry x="75" y="540" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act-basket-2" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-basket">
+          <mxGeometry x="75" y="1140" width="10" height="40" as="geometry" />
+        </mxCell>
+        <mxCell id="act-raven-1" value="" style="html=1;points=[[0,0,0,0,5],[0,1,0,0,-5],[1,0,0,0,5],[1,1,0,0,-5]];perimeter=orthogonalPerimeter;outlineConnect=0;targetShapes=umlLifeline;" vertex="1" parent="lifeline-raven">
+          <mxGeometry x="75" y="620" width="10" height="120" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Frame: click hit the die ================= -->
+        <mxCell id="frame-alt1" value="alt   [click hit the die]" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;spacingLeft=6;spacingTop=4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="320" width="1740" height="760" as="geometry" />
+        </mxCell>
+
+        <!-- Nested frame: on the face rolled -->
+        <mxCell id="frame-alt-face" value="alt   [face is a colour]" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;spacingLeft=6;spacingTop=4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="700" y="480" width="1320" height="520" as="geometry" />
+        </mxCell>
+        <mxCell id="sep-label-1" value="else   [face is RAVEN]" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;fontSize=11;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="710" y="700" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sep-line-1" value="" style="line;strokeWidth=1;dashed=1;fillColor=none;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="720" width="1320" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sep-label-2" value="else   [face is BASKET]" style="text;html=1;align=left;verticalAlign=middle;fontStyle=2;fontSize=11;spacingLeft=6;" vertex="1" parent="1">
+          <mxGeometry x="710" y="860" width="400" height="20" as="geometry" />
+        </mxCell>
+        <mxCell id="sep-line-2" value="" style="line;strokeWidth=1;dashed=1;fillColor=none;html=1;" vertex="1" parent="1">
+          <mxGeometry x="700" y="880" width="1320" height="20" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Frame: click hit a tree AND status is AWAITING_FRUIT_CHOICE ================= -->
+        <mxCell id="frame-alt2" value="alt   [click hit a tree AND status is AWAITING_FRUIT_CHOICE]" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;spacingLeft=6;spacingTop=4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1120" width="1520" height="280" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Frame: click hit nothing relevant ================= -->
+        <mxCell id="frame-alt3" value="alt   [click hit nothing relevant]" style="shape=umlFrame;whiteSpace=wrap;html=1;align=left;verticalAlign=top;fontStyle=1;spacingLeft=6;spacingTop=4;fontSize=12;" vertex="1" parent="1">
+          <mxGeometry x="280" y="1440" width="420" height="140" as="geometry" />
+        </mxCell>
+        <mxCell id="note-no-change" value="no state change &#8212; this is the case that today re-applies the last roll (chapter 11, finding 2)" style="shape=note;whiteSpace=wrap;html=1;fillColor=#f8cecc;strokeColor=#b85450;align=left;verticalAlign=top;spacingLeft=6;spacingTop=6;size=14;fontSize=10;" vertex="1" parent="1">
+          <mxGeometry x="320" y="1480" width="340" height="60" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Messages 1-2 ================= -->
+        <mxCell id="msg-1" value="mouse click at (x, y)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.049;exitDx=0;exitDy=0;entryX=0;entryY=0.049;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-player" target="lifeline-app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-2" value="hit_test(x, y)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.074;exitDx=0;exitDy=0;entryX=0;entryY=0.074;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-app" target="lifeline-boardview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-2r" value="hit element" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.099;exitDx=0;exitDy=0;entryX=1;entryY=0.099;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-boardview" target="lifeline-app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Messages 3a-3c ================= -->
+        <mxCell id="msg-3a" value="roll(rng)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.148;exitDx=0;exitDy=0;entryX=0;entryY=0.148;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-app" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-3b" value="roll(rng)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.173;exitDx=0;exitDy=0;entryX=0;entryY=0.173;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-dice">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-3c" value="DieFace" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.198;exitDx=0;exitDy=0;entryX=1;entryY=0.198;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-dice" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Nested alt: colour branch ================= -->
+        <mxCell id="msg-color-1" value="tree_bearing(face)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.247;exitDx=0;exitDy=0;entryX=0;entryY=0.247;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-orchard">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-color-2" value="Tree" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.272;exitDx=0;exitDy=0;entryX=1;entryY=0.272;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-orchard" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-color-3" value="pick()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.296;exitDx=0;exitDy=0;entryX=0;entryY=0.296;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-tree">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-color-4" value="Fruit" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.321;exitDx=0;exitDy=0;entryX=1;entryY=0.321;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-tree" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-color-5" value="add(fruit)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.346;exitDx=0;exitDy=0;entryX=0;entryY=0.346;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-basket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Nested alt: RAVEN branch ================= -->
+        <mxCell id="msg-raven-1" value="move_forward()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.395;exitDx=0;exitDy=0;entryX=0;entryY=0.395;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-raven">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-raven-2" value="has_reached_orchard()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.420;exitDx=0;exitDy=0;entryX=0;entryY=0.420;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-raven">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-raven-3" value="bool" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.444;exitDx=0;exitDy=0;entryX=1;entryY=0.444;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-raven" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Nested alt: BASKET branch (self message) ================= -->
+        <mxCell id="msg-basket-self" value="status = AWAITING_FRUIT_CHOICE" style="html=1;verticalAlign=top;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.494;exitDx=0;exitDy=0;entryX=1;entryY=0.519;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="920" />
+              <mxPoint x="930" y="960" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================= Message 3e: return of the outer alt ================= -->
+        <mxCell id="msg-3e" value="DieFace" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.568;exitDx=0;exitDy=0;entryX=1;entryY=0.568;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Messages 4a-4b ================= -->
+        <mxCell id="msg-4a" value="choose(tree)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.642;exitDx=0;exitDy=0;entryX=0;entryY=0.642;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-app" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-4b1" value="pick()" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.667;exitDx=0;exitDy=0;entryX=0;entryY=0.667;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-tree">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-4b2" value="Fruit" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.691;exitDx=0;exitDy=0;entryX=1;entryY=0.691;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-tree" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-4b3" value="add(fruit)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.716;exitDx=0;exitDy=0;entryX=0;entryY=0.716;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-basket">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-4b4-self" value="status = RUNNING" style="html=1;verticalAlign=top;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.741;exitDx=0;exitDy=0;entryX=1;entryY=0.765;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="930" y="1320" />
+              <mxPoint x="930" y="1360" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+
+        <!-- ================= Messages 6-7 ================= -->
+        <mxCell id="msg-6a" value="status" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.926;exitDx=0;exitDy=0;entryX=0;entryY=0.926;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-app" target="lifeline-game">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-6b" value="GameStatus" style="html=1;verticalAlign=bottom;endArrow=open;endSize=8;dashed=1;rounded=0;fontSize=11;exitX=0;exitY=0.951;exitDx=0;exitDy=0;entryX=1;entryY=0.951;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-game" target="lifeline-app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="msg-7" value="draw(game)" style="html=1;verticalAlign=bottom;endArrow=block;rounded=0;fontSize=11;exitX=1;exitY=0.975;exitDx=0;exitDy=0;entryX=0;entryY=0.975;entryDx=0;entryDy=0;" edge="1" parent="1" source="lifeline-app" target="lifeline-boardview">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+
+        <!-- ================= Notes ================= -->
+        <mxCell id="note-adr5" value="Game.roll() is the only method that mutates state, and app.py calls it only on a confirmed die hit. Game.last_face is a display value and never triggers a rule (ADR 0005)." style="shape=note;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;align=left;verticalAlign=top;spacingLeft=6;spacingTop=6;size=16;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="320" width="380" height="140" as="geometry" />
+        </mxCell>
+
+        <mxCell id="note-reads-only" value="reads state only, never mutates" style="shape=note;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;align=left;verticalAlign=top;spacingLeft=6;spacingTop=6;size=14;fontSize=11;" vertex="1" parent="1">
+          <mxGeometry x="2060" y="1660" width="300" height="60" as="geometry" />
+        </mxCell>
+
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

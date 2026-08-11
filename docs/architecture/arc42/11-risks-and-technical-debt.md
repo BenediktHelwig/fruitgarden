@@ -6,6 +6,8 @@ Nearly all findings below trace to a single architectural property: **the render
 
 The findings are listed in order of impact on the ranked quality goals. Each entry states what is wrong, which quality goal it damages, and the direction a fix would take in one sentence.
 
+Every finding below now carries a reference to the architecture decision that resolves it; all of those decisions currently have status `proposed`, so nothing here is fixed yet—the references say how, not when. See [migration-roadmap.md](../migration-roadmap.md) for the order in which these changes will be sequenced.
+
 ---
 
 ## 1. No Separation of Domain and Presentation
@@ -17,6 +19,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** You want to change the game so the raven advances only every two rolls, not every one. You must search for every place that calls `raven.moveForward()` and understand whether it is safe to modify. The answer depends on understanding how the render loop uses `raven.picPosX` to draw the sprite—coupling that is spread across construction (lines 140–145), the move method (lines 46–48), the loss check (line 317), and the draw call (line 342).
 
 **Direction:** Extract a rules object that owns fruit counts and raven steps (as integers, not pixels or lists), with rendering reading from it as a view.
+
+**Resolved by:** [ADR 0001](../decisions/0001-separate-domain-model-from-presentation.md) — the layer rule; `Game` owns the rules
 
 ---
 
@@ -32,6 +36,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 
 **Direction:** Clear `draftResult` to `"none"` after the rule block applies it, or move the rule block inside the `if dice.overDice():` condition.
 
+**Resolved by:** [ADR 0005](../decisions/0005-die-faces-as-enum-and-guarded-roll.md) — `Game.roll()` as the only mutation, `last_face` as a display value only
+
 ---
 
 ## 3. The Basket Rule Diverges from the Board Game
@@ -43,6 +49,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** A child plays the digital game after playing the physical one. They roll the basket and expect to click a tree to choose fruit. Instead, the game gives them a random apple and moves on. They notice and ask "why can't I choose?"
 
 **Direction:** Turn fruit into clickable elements; when a basket is rolled, allow the player to click a fruit to harvest it, rather than auto-selecting one.
+
+**Resolved by:** [ADR 0006](../decisions/0006-basket-roll-becomes-player-choice.md) — an `AWAITING_FRUIT_CHOICE` state and clickable trees
 
 ---
 
@@ -56,6 +64,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 
 **Direction:** Delete it, or promote it by fixing the bugs and making it the real domain module, replacing the module-level lists and rules in `main.py`.
 
+**Resolved by:** [ADR 0009](../decisions/0009-retire-module-objects-py.md) — deleted once `domain/` fulfils its intent
+
 ---
 
 ## 5. pics/ Is Not Bundled in the PyInstaller Package
@@ -67,6 +77,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** A user downloads the packaged game from `dist/main/main.exe` and tries to run it from their Desktop. The window opens, then crashes when trying to load the first image. No error message tells them to copy `pics/` alongside. They are confused and assume the application is broken.
 
 **Direction:** Declare `pics/` in `datas` in `main.spec` so it is copied into the bundle.
+
+**Resolved by:** [ADR 0010](../decisions/0010-build-and-deployment-hygiene.md) — `datas=[('pics', 'pics')]` in main.spec
 
 ---
 
@@ -80,6 +92,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 
 **Direction:** Expose a public method or property on `Element` (e.g., `get_bounds()` or `.rect`) that returns the sprite's bounds; use it from `Dice.overDice()`.
 
+**Resolved by:** [ADR 0007](../decisions/0007-layout-and-assets-as-data.md) — `Sprite` exposes its bounds publicly
+
 ---
 
 ## 7. Generated Artefacts Under Version Control
@@ -91,6 +105,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** When reading the git log to understand how the code evolved, most commits have large binary diffs in `dist/` and `build/`. When searching git history for a change to a rule, the results are buried in noise from rebuilds. The author's learning artefact is obscured by its own deployment pipeline.
 
 **Direction:** Remove `build/` and `dist/` from version control and add them to `.gitignore`.
+
+**Resolved by:** [ADR 0010](../decisions/0010-build-and-deployment-hygiene.md) — `.gitignore` plus `git rm --cached`
 
 ---
 
@@ -104,6 +120,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 
 **Direction:** Create `requirements.txt` with explicit versions (e.g., `pygame==2.0.0`) pinning the dependencies to what the system was developed and tested with.
 
+**Resolved by:** [ADR 0010](../decisions/0010-build-and-deployment-hygiene.md) — a pinned `requirements.txt`
+
 ---
 
 ## 9. No Test Seam
@@ -115,6 +133,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** You want to add a feature: "every fifth roll is a bonus roll, giving the player two turns." You modify the rule block and test manually by clicking 25 times. It looks right. You commit. Later, a player reports that the bonus does not work reliably. You cannot run a unit test to debug it. You must trace through the code and guess.
 
 **Direction:** Follows from finding 1: extract a rules object with methods like `apply_roll(result, game_state)` that return a new state, testable without pygame.
+
+**Resolved by:** [ADR 0008](../decisions/0008-pytest-test-seam-without-display.md) — pytest against `domain/`, no display required
 
 ---
 
@@ -128,6 +148,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 
 **Direction:** Build a single loop over an ordered list of fruit stocks; on a basket roll, iterate the list until finding a non-empty stock, then pop from it.
 
+**Resolved by:** [ADR 0006](../decisions/0006-basket-roll-becomes-player-choice.md) — the fallback chains are deleted, not refactored
+
 ---
 
 ## 11. Positional Coupling in World Construction
@@ -139,6 +161,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** You want to move the first red apple from its current position. You find the `redAppleList` loop at lines 147–169. In the `if i == 0:` branch (line 149), the position is `posX = WINDOWWIDTH / 3` and `posY = 0`. You change it to `posX = WINDOWWIDTH / 3.2` to shift it slightly. A week later, you want to adjust all four red apples slightly to the right. You must edit the same `posX` expression in all four conditional branches—or risk getting out of sync. By the fourth branch, it is easy to miss one or make a typo. The error goes unnoticed until the apple appears in the wrong place during testing.
 
 **Direction:** Move the coordinates into a data structure (a list of tuples or a list of dictionaries) and build the objects in one loop over that data.
+
+**Resolved by:** [ADR 0007](../decisions/0007-layout-and-assets-as-data.md) — coordinates move into a data table
 
 ---
 
@@ -152,6 +176,8 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 
 **Direction:** Load all images and fonts at startup; store them in module-level dictionaries; look them up in the render pass instead of loading from disk each frame.
 
+**Resolved by:** [ADR 0007](../decisions/0007-layout-and-assets-as-data.md) — `AssetCache` loads images and fonts once at startup
+
 ---
 
 ## 13. Residue: Mixed Languages and Debug Output
@@ -163,3 +189,5 @@ The findings are listed in order of impact on the ranked quality goals. Each ent
 **Scenario:** A developer reads the code and assumes the game is fully English. They add a new message in English. The German strings confuse them. They ask if there is a plan to support multiple languages. There is not; the German is just left over.
 
 **Direction:** Choose one language (English recommended, to match the codebase). Remove the debug print at line 398. Consider adding a restart button instead of forcing the player to close the window.
+
+**Resolved by:** [ADR 0007](../decisions/0007-layout-and-assets-as-data.md) — cleaned up when the presentation layer is rewritten (see the migration roadmap, step 3)

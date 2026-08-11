@@ -30,3 +30,16 @@
 | **PyInstaller `datas`** | A configuration option in `main.spec` (a list of tuples) specifying additional files or directories to include in the packaged bundle. Currently set to `datas=[]`, excluding `pics/`, which is a bug (see Chapter 11, finding 5). |
 | **Render pass** | The phase of the game loop that draws the frame to the screen (`main.py:324–358`). Clears the screen, draws all sprites, flips the buffer, and enforces the frame rate. |
 | **Rule block** | The part of the game loop that applies game logic based on player input (`main.py:265–313`). Contains the fruit harvesting logic, raven movement, and the fallback chains for basket rolls. See Chapter 11, findings 2, 3, and 10. |
+
+## Target Architecture Terms (Proposed)
+
+| Term | Definition |
+|---|---|
+| **Aggregate** | An object that owns other objects and is the only way to reach them; an encapsulation boundary. In the target model, `Tree` is the aggregate over its fruit: nothing takes a fruit except through the tree that bears it. (Proposed; ADR 0003) |
+| **DieFace** | One of the six outcomes of a roll: RED, GREEN, YELLOW, BLUE, RAVEN, BASKET. Currently a bare string that doubles as a file name; in the target model an enum with guarded construction. (Proposed; ADR 0005) |
+| **Step** | One advance of the raven towards the orchard. Five steps lose the game. Currently not represented: the raven's progress is the pixel coordinate `picPosX` and the five steps are an emergent property of the window geometry. In the target model, a step is an integer counter. (Proposed; ADR 0004) |
+| **Layer rule** | The invariant carrying the target architecture: no file under `domain/` may import pygame. Machine-checkable via AST inspection. (Proposed; ADR 0001) |
+| **Domain / Presentation** | The two packages of the target architecture. `domain/` models the game of Obstgarten in plain Python; `presentation/` renders it to the screen and handles input. The dependency runs one way only: presentation depends on domain, never the reverse. (Proposed; ADR 0001) |
+| **Orchard** (target) | In the target model, the collection of the four trees; the object that answers whether the game is won (`orchard.is_empty()`). Owns the win condition. (Proposed; ADR 0003) |
+| **Tree** (target) | In the target model, owns the fruit of one colour and is the only way to access them. Replaces the current visual-only sprite with a stateful object. (Proposed; ADR 0003) |
+| **Basket** (target) | In the target model, holds the harvested fruit (a collection) rather than being a picture with no state. Owns the outcome of a harvest. (Proposed; ADR 0003) |
